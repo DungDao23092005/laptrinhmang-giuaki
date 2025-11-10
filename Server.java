@@ -76,7 +76,7 @@ class GameHandler extends Thread {
             System.out.println("-> Ket qua: P1 " + result1 + ", P2 " + result2);
             out1.println("KET QUA: BAN " + result1);
             out2.println("KET QUA: BAN " + result2);
-
+        //
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
