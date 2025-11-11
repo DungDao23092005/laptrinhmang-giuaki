@@ -48,11 +48,11 @@ class GameHandler extends Thread {
             
             out1.println("CHO");
             
-            out1.println("START");
-            out2.println("START");
-
             while (true) {
-                
+        
+                System.out.println("Gui tin hieu START cho vong moi...");
+                out1.println("START");
+                out2.println("START");
                 String choice1 = in1.readLine();
                 String choice2 = in2.readLine();
                 
@@ -95,7 +95,7 @@ class GameHandler extends Thread {
             }
 
         } catch (Exception e) {
-            System.out.println("Loi trong GameHandler: " + e.getMessage());
+            System.out.println("Loi trong GameHandler (Co the do client thoat): " + e.getMessage());
         } finally {
             try {
                 player1.close();
