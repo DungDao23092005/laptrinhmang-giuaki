@@ -49,12 +49,25 @@ class GameHandler extends Thread {
             out1.println("CHO");
             
             while (true) {
-        
+                
                 System.out.println("Gui tin hieu START cho vong moi...");
                 out1.println("START");
                 out2.println("START");
+
                 String choice1 = in1.readLine();
                 String choice2 = in2.readLine();
+                
+                if (choice1 == null) {
+                    System.out.println("Nguoi choi 1 da thoat.");
+                    try { out2.println("QUIT_DOI_THU"); } catch (Exception e) {}
+                    break; 
+                }
+
+                if (choice2 == null) {
+                    System.out.println("Nguoi choi 2 da thoat.");
+                    try { out1.println("QUIT_DOI_THU"); } catch (Exception e) {}
+                    break; 
+                }
                 
                 System.out.println("P1 chon: " + choice1 + ", P2 chon: " + choice2);
 
@@ -84,6 +97,13 @@ class GameHandler extends Thread {
                 String playAgain1 = in1.readLine();
                 String playAgain2 = in2.readLine();
 
+                if (playAgain1 == null || playAgain2 == null) {
+                     System.out.println("Mot nguoi choi da thoat khi dang hoi choi lai.");
+                     try { out1.println("QUIT_DOI_THU"); } catch (Exception e) {}
+                     try { out2.println("QUIT_DOI_THU"); } catch (Exception e) {}
+                     break;
+                }
+
                 if (!playAgain1.equals("Y") || !playAgain2.equals("Y")) {
                     System.out.println("Game ket thuc do nguoi choi chon thoat.");
                     out1.println("QUIT_GAME"); 
@@ -95,14 +115,14 @@ class GameHandler extends Thread {
             }
 
         } catch (Exception e) {
-            System.out.println("Loi trong GameHandler (Co the do client thoat): " + e.getMessage());
+            System.out.println("Loi trong GameHandler: " + e.getMessage());
         } finally {
             try {
                 player1.close();
                 player2.close();
                 System.out.println("Da dong ket noi cho 1 game session.");
             } catch (Exception e) {
-                 e.printStackTrace();
+                 // e.printStackTrace();
             }
         }
     }
